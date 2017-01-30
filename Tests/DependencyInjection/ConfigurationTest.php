@@ -29,8 +29,8 @@ class ConfigurationTest extends \PHPUnit_Framework_TestCase
         //check if all config values are available
         $this->assertArrayHasKey('sid', $children);
         $this->assertArrayHasKey('authToken', $children);
-        $this->assertArrayHasKey('version', $children);
-        $this->assertArrayHasKey('retryAttempts', $children);
+        $this->assertArrayHasKey('apiKey', $children);
+        $this->assertArrayHasKey('region', $children);
     }
 
     /**
@@ -50,9 +50,5 @@ class ConfigurationTest extends \PHPUnit_Framework_TestCase
         $this->assertArrayHasKey('class', $config['services']['twilio.capability']);
         $this->assertArrayHasKey(str_replace('%', '', $config['services']['twilio.capability']['class']), $config['parameters']);
         $this->assertArrayHasKey(str_replace('%', '', $config['services']['twilio.api']['class']), $config['parameters']);
-        // lookups
-        $this->assertArrayHasKey('twilio.lookups', $config['services']);
-        $this->assertArrayHasKey('class', $config['services']['twilio.lookups']);
-        $this->assertArrayHasKey(str_replace('%', '', $config['services']['twilio.lookups']['class']), $config['parameters']);
     }
 }

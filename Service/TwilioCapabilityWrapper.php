@@ -1,5 +1,8 @@
 <?php
+
 namespace Vresh\TwilioBundle\Service;
+
+use Twilio\Jwt\ClientToken;
 
 /**
  * This file is part of the VreshTwilioBundle.
@@ -9,7 +12,7 @@ namespace Vresh\TwilioBundle\Service;
  *
  * @author Joseph Le <hello@josephle.me>
  */
-class TwilioCapabilityWrapper extends \Services_Twilio_Capability
+class TwilioCapabilityWrapper extends ClientToken
 {
     /**
      * @param string $sid
@@ -21,16 +24,16 @@ class TwilioCapabilityWrapper extends \Services_Twilio_Capability
     }
 
     /**
-     * Returns a new \Services_Twilio_Capability instance from the given parameters
+     * Returns a new \Twilio\Jwt\ClientToken instance from the given parameters
      *
      * @param      $sid
      * @param      $token
      *
-     * @return \Services_Twilio_Capability
+     * @return ClientToken
      */
     public function createInstance($sid, $token)
     {
-        return new \Services_Twilio_Capability($sid, $token);
+        return new ClientToken($sid, $token);
     }
 
 }

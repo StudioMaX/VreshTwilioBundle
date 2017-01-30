@@ -1,5 +1,8 @@
 <?php
+
 namespace Vresh\TwilioBundle\Service;
+
+use Twilio\Rest\Client;
 
 /**
  * This file is part of the VreshTwilioBundle.
@@ -9,32 +12,32 @@ namespace Vresh\TwilioBundle\Service;
  *
  * @author Fridolin Koch <info@fridokoch.de>
  */
-class TwilioWrapper extends \Services_Twilio
+class TwilioWrapper extends Client
 {
     /**
-     * @param string $sid
-     * @param string $token
-     * @param null   $version
-     * @param int    $retryAttempts
+     * @param string $username
+     * @param string $password
+     * @param string $accountSid
+     * @param string $region
      */
-    public function __construct($sid, $token, $version = null, $retryAttempts = 1)
+    public function __construct($username = null, $password = null, $accountSid = null, $region = null)
     {
-        parent::__construct($sid, $token, $version, null, $retryAttempts);
+        parent::__construct($username, $password, $accountSid, $region);
     }
 
     /**
-     * Returns a new \Services_Twilio instance from the given parameters
+     * Returns a new Twilio\Rest\Client instance from the given parameters
      *
-     * @param      $sid
-     * @param      $token
-     * @param null $version
-     * @param int  $retryAttempts
+     * @param string $username
+     * @param string $password
+     * @param string $accountSid
+     * @param string $region
      *
-     * @return \Services_Twilio
+     * @return Client
      */
-    public function createInstance($sid ,$token, $version = null, $retryAttempts = 1)
+    public function createInstance($username = null, $password = null, $accountSid = null, $region = null)
     {
-        return new \Services_Twilio($sid, $token, $version, null, $retryAttempts);
+        return new Client($username, $password, $accountSid, $region);
     }
 
 }
